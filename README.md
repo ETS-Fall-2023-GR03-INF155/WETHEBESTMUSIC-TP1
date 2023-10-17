@@ -38,4 +38,4 @@ L'organisation du projet est la suivante :
 
 ## Licence
 
-Ce projet est sous licence [Insérer ici la licence de votre choix, par exemple, MIT License]. Consultez le fichier `LICENSE` pour plus de détails.
+Ce projet est sous licence [MIT License]. Consultez le fichier `LICENSE` pour plus de détails.
