@@ -23,7 +23,7 @@ void plateau_init(int plateau[], int nb_colonnes)
 
 	for (i = 0; i < nb_colonnes; i++) {
 		plateau[i] = md_randf(1, PLATEAU_MAX_PIECES); //rempli le tableau avec un nombre aléatoire
-		printf­("aloo")
+		printf­("aloo");
 	}
 }
 
