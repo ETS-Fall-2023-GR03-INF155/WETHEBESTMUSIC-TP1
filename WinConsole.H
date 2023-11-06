@@ -1,3 +1,9 @@
+/*===========================================================================*/
+/*                             WinConsole.h                                  */
+/*      Ce module permet de controler l'affichage dans la console texte      */
+/*===========================================================================*/
+
+
 // WinConsole.H : Windows text console management function library
 
 // --- Function Prototypes ---

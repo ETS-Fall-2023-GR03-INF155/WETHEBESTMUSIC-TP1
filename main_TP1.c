@@ -7,24 +7,23 @@
 /*===========================================================================*/
 
 #include<stdio.h>
-#include<stdlib.h>
-#include<math.h>
-#include "nim.h"
+#include"nim_io.h"
+#include"m_distributions.h"
+#include"nim_test.h"
 
 /*===========================================================================*/
-/*                              Fonctions                                    */
+/*                                 Main                                      */
 /*===========================================================================*/
 
-//Initialise le plateau de jeu en remplissant les colones
-// d'un nombre aléatoire de pièces 
-void plateau_init(int plateau[], int nb_colonnes)
-
+int main(void)
 {
-	int i;
-	
-	for (i = 0; i < nb_colonnes; i++) {
-		plateau[i] = md_randf(1, PLATEAU_MAX_PIECES); //rempli le tableau avec un nombre aléatoire
-	}
-}
+	md_srand_interne();// pour la fonction md randf (initialise un nouveau nombre de départ)
 
-/*===========================================================================*/
+	printf("\nTEST 1 ET 2\n");
+	test_1_et_2();
+
+	
+
+	getchar();
+	return 0;
+}
