@@ -16,14 +16,14 @@
 /*===========================================================================*/
 
 //Initialise le plateau de jeu en remplissant les colones
-// d'un nombre aléatoire de pièces 
+// d'un nombre alÃ©atoire de piÃ¨ces 
 void plateau_init(int plateau[], int nb_colonnes)
 {
 	int i;
 
 	for (i = 0; i < nb_colonnes; i++) {
-		plateau[i] = md_randf(1, PLATEAU_MAX_PIECES); //rempli le tableau avec un nombre aléatoire
-		printf­("aloo");
+		plateau[i] = md_randf(1, PLATEAU_MAX_PIECES); //rempli le tableau avec un nombre alÃ©atoire
+		printfÂ­("aloo fuck you");
 	}
 }
 
@@ -32,7 +32,7 @@ void plateau_init(int plateau[], int nb_colonnes)
 int nim_jouer_tour(int plateau[], int nb_colonnes, int colonne,
 	int nb_pieces) {
 	if (colonne < 0 || colonne >= nb_colonnes || nb_pieces <= 0 || nb_pieces > plateau[colonne]) {
-		printf("Mouvement invalide. Veuillez réessayer!");
+		printf("Mouvement invalide. Veuillez rÃ©essayer!");
 		return FALSE;
 	}
 	plateau[colonne] -= nb_pieces;	//Retire "nb_pieces" de la colonne "colonne" du plateau et retourne Vrai
@@ -71,7 +71,7 @@ void nim_choix_ia_aleatoire(const int plateau[], int nb_colonnes,
 	int* choix_colonne, int* choix_nb_pieces) {
 	srand(time(NULL));
 	*choix_colonne = rand() % nb_colonnes;
-	// Choix aléatoire entre 0 et le nombre de pièces dans la colonne 
+	// Choix alÃ©atoire entre 0 et le nombre de piÃ¨ces dans la colonne 
 	*choix_nb_pieces = rand() % (plateau[*choix_colonne] + 1);
 }
 
