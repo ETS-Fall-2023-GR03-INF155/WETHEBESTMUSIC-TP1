@@ -44,24 +44,24 @@ void plateau_afficher(const int plateau[], int nb_colonnes, int col_select)
 		for (j = 1; j <= 35; j++)
 		{
 
-		//Étape 1 rangée d'en bas
+			//Étape 1 rangée d'en bas
 
-			gotoxy(7 + i + (i * 2), 42); 
+			gotoxy(7 + i + (i * 2), 42);
 			printf("%d", i);
 
-		//Étape 2 première colone
+			//Étape 2 première colone
 
 			gotoxy(2, 40 - j);
 			printf("%d", j);
 
-        //Étape 3 les étoile
+			//Étape 3 les étoile
 
 			if (plateau[i] >= j) //condition pour avoir une étoile
 			{
 				if (i == col_select) // si la colone est celle sélectionée
 				{
 					textbackground(RED); //tout les prochains print seront sur un fond roug
-						
+
 					gotoxy(7 + i + (i * 2), 40 - j);
 					printf("*");
 				}
@@ -77,4 +77,5 @@ void plateau_afficher(const int plateau[], int nb_colonnes, int col_select)
 		}
 	}
 }
+
 /*===========================================================================*/

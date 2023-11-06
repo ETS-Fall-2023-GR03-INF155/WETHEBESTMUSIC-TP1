@@ -17,11 +17,23 @@
 //Demande à l'usager de saisir un entier entre les bornes "min" et "max" (inclusivement).
 int lire_entier(int, int);
 
-////Affiche la configuration du plateau à l'écran
+//Affiche la configuration du plateau à l'écran
 void plateau_afficher(int[], int, int);
 
+//Permet de choisir une colonne du plateau de jeu avec les touches fléchées (gauche, droite)
+// ou l’espace (‘ ‘). 
+static int choisir_colonne(int plateau[], int nb_colonnes);
 
+//Déclenche le tour de l'humain.
+void tour_humain(int plateau[], int nb_colonnes);
 
+//Déclenche le tour de l'ordinateur
+void tour_ia(int plateau[], int nb_colonnes, double difficulte);
+
+//Fonction qui contrôle le jeu de nim: elle donne la main, tour à tour, à chacun 
+// des deux joueurs et déclare le gagnant une fois la partie terminée. 
+// On quitte cette fonction quand la partie est terminée.
+void demarrer_jeu(int niveau);
 
 /*===========================================================================*/
 #endif // vas avec le #ifndef

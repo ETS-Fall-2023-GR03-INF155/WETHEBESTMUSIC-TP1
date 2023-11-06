@@ -10,7 +10,7 @@
 /*                         Prototype des fonctions                           */
 /*===========================================================================*/
 
-void test_1_et_2(); //test valide-entier et plateau_init
+void test_Partie1(); //Tests des fonctions de la partie 1
 
 /*===========================================================================*/
 #endif // vas avec le #ifndef
