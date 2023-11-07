@@ -9,6 +9,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
+#include<conio.h>
 #include "nim_io.h"
 
 /*===========================================================================*/
@@ -25,23 +26,23 @@ int lire_entier(int min, int max)
 	{
 		printf("\nEntrez un entier entre %d et %d: ", min, max);
 		scanf("%d", &entier);
-		if (entier<min || entier>max) //Affiche erreur si l'entier n'est pas entre les bornes
+		if (entier < min || entier > max) //Affiche erreur si l'entier n'est pas entre les bornes
 			printf("\nErreur,");
-	} while (entier<min || entier>max);
+	} while (entier < min || entier > max);
+
 	return entier;
 }
 
 /*===========================================================================*/
 
 //Affiche la configuration du plateau à l'écran
-
 void plateau_afficher(const int plateau[], int nb_colonnes, int col_select)
 {
 	int coltab, j, i;
 
 	for (i = 0; i < nb_colonnes; i++)
 	{
-		for (j = 1; j <= 35; j++)
+		for (j = 1; j <= PLATEAU_MAX_PIECES; j++)
 		{
 
 			//Étape 1 rangée d'en bas

@@ -28,11 +28,7 @@ void plateau_init(int plateau[], int nb_colonnes);
 //Applique des changements à la configuration du plateau de jeu en retirant 
 // "nb_pieces" de la colonne "colonne" du plateau
 int nim_jouer_tour(int plateau[], int nb_colonnes, int colonne,
-    int nb_pieces);
-
-//Supprime la colonne "col_a_supprimer" du plateau
-void plateau_supprimer_colonne(int plateau[], int nb_colonnes,
-    int col_a_supprimer);
+                   int nb_pieces);
 
 //Fonction qui supprime les colonnes vides du tableau en utilisant la fonction 
 // "plateau_supprimer_colonne"
@@ -41,14 +37,13 @@ int plateau_defragmenter(int plateau[], int nb_colonnes);
 //Fonction qui effectue un jeu aléatoire en choisissant au hasard une colonne,
 // puis au hasard le nombre de pièces à jouer de cette colonne
 void nim_choix_ia_aleatoire(const int plateau[], int nb_colonnes,
-    int* choix_colonne, int* choix_nb_pieces);
+                            int* choix_colonne, int* choix_nb_pieces);
 
 //Fonction qui détermine quel doit être le jeu de l'ordinateur. Cette fonction implémente l'algorithme
 // intelligent décrit dans la partie 2 du TP. Le choix de l'ordinateur sera stocké dans les deux références
 // "choix_colonne" et "choix_nb_pieces"
 void nim_choix_ia(const int plateau[], int nb_colonnes, int niveau,
-    int* choix_colonne, int* choix_nb_pieces);
-
+                  int* choix_colonne, int* choix_nb_pieces);
 
 /*===========================================================================*/
 #endif // vas avec le #ifndef

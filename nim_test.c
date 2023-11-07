@@ -11,28 +11,30 @@
 #include<math.h>
 #include"nim_test.h"
 #include "nim_io.h"
+#include "nim.h"
 
 /*===========================================================================*/
 /*                            Test des fonctions                             */
 /*===========================================================================*/
 
-// test lire_entier et plateau_init
-void test_Partie1()
-{
-
-	//test lire_entier
+//Fonction qui test toutes les fonctions de la partie 1
+void test_Partie1_2() {
 	int nb_colonnes; //le nb de colones du plateau
-	int plateau[PLATEAU_MAX_COLONNES], i;
+	int plateau[PLATEAU_MAX_COLONNES];
+	int i;
 	int selection = 1;
 
+	//Test lire_entier
 	nb_colonnes = lire_entier(1, PLATEAU_MAX_COLONNES);
-	printf("votre nombre selectione est: %d\n", nb_colonnes); //fin test lire_entier
+	printf("Votre nombre selectione est: %d\n", nb_colonnes); //fin test lire_entier
 
-	//test plateau_in
+	//Test plateau_init
 	plateau_init(plateau, nb_colonnes); //nb de colones définie dans lire_entier
 	printf("Voici votre tableau:\n");
-	for (i = 0; i < nb_colonnes; i++) //print le tableau test
-		printf("%d ", plateau[i]); //fin test plateau_ini
+	for (i = 0; i < nb_colonnes; i++) { //print le tableau test
+		printf("%d ", plateau[i]); //fin test plateau_init
+	}
+	printf("\n");
 
 	//test plateau_afficher
 
@@ -53,20 +55,4 @@ void test_Partie1()
 	if (nim_jouer_tour(plateau, nb_colonnes, colonne, nb_pieces)) {
 		plateau_afficher(plateau, nb_colonnes, selection);
 	}
-
-	//test plateau_supprimer_colonne
-	int col_a_supprimer = lire_entier(0, nb_colonnes - 1);
-
-	plateau_supprimer_colonne(plateau, nb_colonnes, col_a_supprimer);
-	plateau_afficher(plateau, nb_colonnes, selection);
-
-	//test plateau_defragmenter
-	int nouveau_nb_colonnes = plateau_defragmenter(plateau, nb_colonnes);
-	plateau_afficher(plateau, nouveau_nb_colonnes, selection);
-
-	//test nim_choix_ia
-	int choix_colonne_ia;
-	int choix_nb_pieces_ia;
-
-	nim_choix_ia_aleatoire(plateau, nouveau_nb_colonnes, &choix_colonne_ia, &choix_nb_pieces_ia);
 }

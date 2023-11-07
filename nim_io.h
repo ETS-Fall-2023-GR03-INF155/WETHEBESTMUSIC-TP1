@@ -10,6 +10,15 @@
 #include"nim.h"
 #include"winconsole.h"
 
+
+/*===========================================================================*/
+/*                       Déclarations des constantes                         */
+/*===========================================================================*/
+
+#define ESC 27		/* code ASCII du <ESC> */
+#define FLECHE_GAUCHE	75	/* code ASCII de <FLECHE_GAUCHE> */
+#define	FLECHE_DROITE	77	/* code ASCII de <FLECHE_DROITE> */
+
 /*===========================================================================*/
 /*                         Prototype des fonctions                           */
 /*===========================================================================*/
@@ -19,10 +28,7 @@ int lire_entier(int, int);
 
 //Affiche la configuration du plateau à l'écran
 void plateau_afficher(int[], int, int);
-
-//Permet de choisir une colonne du plateau de jeu avec les touches fléchées (gauche, droite)
-// ou l’espace (‘ ‘). 
-static int choisir_colonne(int plateau[], int nb_colonnes);
+allo;
 
 //Déclenche le tour de l'humain.
 void tour_humain(int plateau[], int nb_colonnes);
