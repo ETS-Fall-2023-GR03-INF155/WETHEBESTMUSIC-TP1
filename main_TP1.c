@@ -22,7 +22,7 @@ int main(void)
 	printf("\nTEST 1 ET 2\n");
 	test_Partie1();
 
-
+	
 
 	getchar();
 	return 0;
