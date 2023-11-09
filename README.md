@@ -4,8 +4,8 @@ Ce dépôt GitHub est dédié au développement d'un jeu de Nim, réalisé dans 
 
 ## Auteurs
 
-- [Nom de l'auteur 1](lien-vers-le-compte-GitHub-1)
-- [Nom de l'auteur 2](lien-vers-le-compte-GitHub-2)
+- [Justin Martel](lien-vers-le-compte-GitHub-1)
+- [Noah Tremblay](lien-vers-le-compte-GitHub-2)
 
 ## Description du Projet
 
