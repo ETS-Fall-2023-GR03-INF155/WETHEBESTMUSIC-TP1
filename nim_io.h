@@ -11,6 +11,18 @@
 #include"winconsole.h"
 
 /*===========================================================================*/
+/*                       Déclarations des constantes                         */
+/*===========================================================================*/
+
+#define PLATEAU_MIN_COLONNES 2      //Nombre minimal de colonnes sur le plateau
+#define PLATEAU_MAX_COLONNES 20		//Nombre maximal de colonnes sur le plateau
+#define ESPACE 32
+#define FLECHE_GAUCHE 75
+#define FLECHE_DROITE 77 
+#define ENTER 13
+
+
+/*===========================================================================*/
 /*                         Prototype des fonctions                           */
 /*===========================================================================*/
 
@@ -20,19 +32,14 @@ int lire_entier(int, int);
 //Affiche la configuration du plateau à l'écran
 void plateau_afficher(int[], int, int);
 
-//Permet de choisir une colonne du plateau de jeu avec les touches fléchées (gauche, droite)
-// ou l’espace (‘ ‘). 
-static int choisir_colonne(int plateau[], int nb_colonnes);
+//tour de l'humain
+void tour_humain(int[], int);
 
-//Déclenche le tour de l'humain.
-void tour_humain(int plateau[], int nb_colonnes);
+//tour de l'ia
+void tour_ia(int[], int, int);
 
-//Déclenche le tour de l'ordinateur
-void tour_ia(int plateau[], int nb_colonnes, double difficulte);
-
-//Fonction qui contrôle le jeu de nim: elle donne la main, tour à tour, à chacun 
-// des deux joueurs et déclare le gagnant une fois la partie terminée. 
-// On quitte cette fonction quand la partie est terminée.
+//démare le jeux en demandant le nb de colones puis en alternant entre le tour du joueur et le 
+// tour de l'ia jusqu'a ce qu'un des deux gagne
 void demarrer_jeu(int niveau);
 
 /*===========================================================================*/

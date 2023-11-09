@@ -17,12 +17,9 @@
 
 int main(void)
 {
-	md_srand_interne();// pour la fonction md randf (initialise un nouveau nombre de départ)
+	md_srand_interne();// pour la fonction md_randf (initialise un nouveau nombre de départ)
 
-	printf("\nTEST 1 ET 2\n");
-	test_Partie1();
-
-	
+	test_partie1();
 
 	getchar();
 	return 0;
