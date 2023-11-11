@@ -31,3 +31,13 @@ int inverser_tab_bits(int tab_bits[], int nb_bits) {
 	}
 	return TRUE;
 }
+
+//Fonction qui traduit un nombre décimal en binaire
+int codage_dec2bin(int nombre, int resultat[]) {
+	int nb_bits = 0;
+	while (nombre > 0 && nb_bits < CODAGE_NB_BITS) {
+		resultat[nb_bits++] = nombre % 2;
+		nombre /= 2;
+	}
+	return nb_bits;
+}

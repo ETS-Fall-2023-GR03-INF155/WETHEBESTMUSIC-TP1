@@ -23,6 +23,9 @@
 // l'avant dernier, etc.
 int inverser_tab_bits(int tab_bits[], int nb_bits);
 
+//Fonction qui traduit un nombre décimal en binaire.
+int codage_dec2bin(int nombre, int resultat[]);
+
 /*===========================================================================*/
 #endif // vas avec le #ifndef
 /*===========================================================================*/
