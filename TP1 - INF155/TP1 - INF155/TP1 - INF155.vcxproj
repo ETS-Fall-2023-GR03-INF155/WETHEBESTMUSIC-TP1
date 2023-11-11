@@ -18,6 +18,28 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\..\..\..\..\..\Downloads\WETHEBESTMUSIC-TP1-main\WETHEBESTMUSIC-TP1-main\.gitignore" />
+    <None Include="..\..\..\..\..\..\..\..\..\Downloads\WETHEBESTMUSIC-TP1-main\WETHEBESTMUSIC-TP1-main\LICENSE" />
+    <None Include="..\..\..\..\..\..\..\..\..\Downloads\WETHEBESTMUSIC-TP1-main\WETHEBESTMUSIC-TP1-main\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\..\..\..\..\Downloads\WETHEBESTMUSIC-TP1-main\WETHEBESTMUSIC-TP1-main\codage_numerique.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\..\Downloads\WETHEBESTMUSIC-TP1-main\WETHEBESTMUSIC-TP1-main\m_distributions.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\..\Downloads\WETHEBESTMUSIC-TP1-main\WETHEBESTMUSIC-TP1-main\nim.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\..\Downloads\WETHEBESTMUSIC-TP1-main\WETHEBESTMUSIC-TP1-main\nim_io.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\..\Downloads\WETHEBESTMUSIC-TP1-main\WETHEBESTMUSIC-TP1-main\nim_test.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\..\Downloads\WETHEBESTMUSIC-TP1-main\WETHEBESTMUSIC-TP1-main\WinConsole.H" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\..\..\..\..\Downloads\WETHEBESTMUSIC-TP1-main\WETHEBESTMUSIC-TP1-main\codage_numerique.c" />
+    <ClCompile Include="..\..\..\..\..\..\..\..\..\Downloads\WETHEBESTMUSIC-TP1-main\WETHEBESTMUSIC-TP1-main\main_TP1.c" />
+    <ClCompile Include="..\..\..\..\..\..\..\..\..\Downloads\WETHEBESTMUSIC-TP1-main\WETHEBESTMUSIC-TP1-main\m_distributions.c" />
+    <ClCompile Include="..\..\..\..\..\..\..\..\..\Downloads\WETHEBESTMUSIC-TP1-main\WETHEBESTMUSIC-TP1-main\nim.c" />
+    <ClCompile Include="..\..\..\..\..\..\..\..\..\Downloads\WETHEBESTMUSIC-TP1-main\WETHEBESTMUSIC-TP1-main\nim_io.c" />
+    <ClCompile Include="..\..\..\..\..\..\..\..\..\Downloads\WETHEBESTMUSIC-TP1-main\WETHEBESTMUSIC-TP1-main\nim_test.c" />
+    <ClCompile Include="..\..\..\..\..\..\..\..\..\Downloads\WETHEBESTMUSIC-TP1-main\WETHEBESTMUSIC-TP1-main\WinConsole.c" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -126,28 +148,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\codage_numerique.h" />
-    <ClInclude Include="..\..\m_distributions.h" />
-    <ClInclude Include="..\..\nim.h" />
-    <ClInclude Include="..\..\nim_io.h" />
-    <ClInclude Include="..\..\nim_test.h" />
-    <ClInclude Include="..\..\WinConsole.H" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\codage_numerique.c" />
-    <ClCompile Include="..\..\main_TP1.c" />
-    <ClCompile Include="..\..\m_distributions.c" />
-    <ClCompile Include="..\..\nim.c" />
-    <ClCompile Include="..\..\nim_io.c" />
-    <ClCompile Include="..\..\nim_test.c" />
-    <ClCompile Include="..\..\WinConsole.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\.gitignore" />
-    <None Include="..\..\LICENSE" />
-    <None Include="..\..\README.md" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

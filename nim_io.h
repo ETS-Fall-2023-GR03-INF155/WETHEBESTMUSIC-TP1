@@ -28,7 +28,6 @@ int lire_entier(int, int);
 
 //Affiche la configuration du plateau à l'écran
 void plateau_afficher(int[], int, int);
-allo;
 
 //Déclenche le tour de l'humain.
 void tour_humain(int plateau[], int nb_colonnes);
