@@ -10,7 +10,9 @@
 /*                         Prototype des fonctions                           */
 /*===========================================================================*/
 
-void test_Partie1_2();	//Tests des fonctions de la partie 1 et de la partie 2
+void test_1_et_2();
+void test_tour();
+void test_partie1();
 
 /*===========================================================================*/
 #endif // vas avec le #ifndef

@@ -17,42 +17,135 @@
 /*                            Test des fonctions                             */
 /*===========================================================================*/
 
-//Fonction qui test toutes les fonctions de la partie 1
-void test_Partie1_2() {
-	int nb_colonnes; //le nb de colones du plateau
-	int plateau[PLATEAU_MAX_COLONNES];
-	int i;
+// test lire_entier et plateau_init
+void test_1_et_2()
+{
+
+	//variables
+
+	int colones; //le nb de colones du plateau
+	int plateau[PLATEAU_MAX_COLONNES], i;
 	int selection = 1;
+	int colonne; //temporaire
+	int nb_pieces; //temporaire
+	int iacolonne = 0;
+	int iapiece = 0;
 
-	//Test lire_entier
-	nb_colonnes = lire_entier(1, PLATEAU_MAX_COLONNES);
-	printf("Votre nombre selectione est: %d\n", nb_colonnes); //fin test lire_entier
+	//test lire_entier
 
-	//Test plateau_init
-	plateau_init(plateau, nb_colonnes); //nb de colones définie dans lire_entier
+	colones = lire_entier(1, PLATEAU_MAX_COLONNES);
+	printf("votre nombre selectione est: %d\n", colones); //fin test lire_entier
+
+	//test plateau_ini
+
+	plateau_init(plateau, colones); //nb de colones définie dans lire_entier
 	printf("Voici votre tableau:\n");
-	for (i = 0; i < nb_colonnes; i++) { //print le tableau test
-		printf("%d ", plateau[i]); //fin test plateau_init
-	}
-	printf("\n");
+	for (i = 0; i < colones; i++) //print le tableau test
+		printf("%d ", plateau[i]); //fin test plateau_ini
 
 	//test plateau_afficher
+	//BUG ***** quand on entre 2 colones, la colone de gauche est rouge aussi
 
 	getchar();
 	getchar();//fait une pause (attend que l'utilisateur entre une touche)
-	clrscr(); //clear le terminal
 
-	plateau_afficher(plateau, nb_colonnes, selection);
+	clrscr(); //clear le terminal IMPORTANT
 
-	//test nim_jouer_tour
-	int colonne;
-	int nb_pieces;
+	plateau_afficher(plateau, colones, selection);
 
-	printf("Entrez la colonne et le nombre de pièce à retirer : ");
-	colonne = lire_entier(0, nb_colonnes - 1);
-	nb_pieces = lire_entier(1, plateau[colonne]);
+	//test nim jouer tour 
+		//demander quelle rangée le joueur veut enlever TEMPORAIRE
+	getchar();
+	getchar();//fait une pause (attend que l'utilisateur entre une touche)
+	system("color 0F"); //s'essure d'enlever le rouge
+	clrscr(); //clear le terminal IMPORTANT
 
-	if (nim_jouer_tour(plateau, nb_colonnes, colonne, nb_pieces)) {
-		plateau_afficher(plateau, nb_colonnes, selection);
-	}
+
+	do
+	{
+		printf("entrez une colone :");
+		scanf("%d", &colonne);
+		printf("entrez un nombre de pieces:");
+		scanf("%d", &nb_pieces);
+	} while (!nim_jouer_tour(plateau, colones, colonne, nb_pieces));
+	//fin TEMPORAIRE
+	getchar();
+	getchar();//fait une pause (attend que l'utilisateur entre une touche)
+
+	clrscr(); //clear le terminal IMPORTANT
+
+	plateau_afficher(plateau, colones, selection);
+
+	//test plateau supprimer et plateau défragmenter
+
+	colones = plateau_defragmenter(plateau, colones);
+
+	getchar();
+	getchar();//fait une pause (attend que l'utilisateur entre une touche)
+	system("color 0F"); //s'essure d'enlever le rouge
+	clrscr(); //clear le terminal IMPORTANT
+
+	plateau_afficher(plateau, colones, selection);
+
+	//test ia choix aléatoire
+	/*
+		gotoxy(0, 0);
+		printf("\ncolonne: %d, piece : %d", iacolonne, iapiece);
+		nim_choix_ia_aleatoire(plateau, colones, &iacolonne, &iapiece);
+		printf("\ncolonne: %d, piece : %d", iacolonne, iapiece);
+	*/
+	//test nim_choix_ia
+	nim_choix_ia(plateau, colones, 1, &iacolonne, &iapiece);
+	printf("\ncolonne: %d, piece : %d", iacolonne, iapiece);
+}
+
+void test_tour()
+{
+
+	//variables
+
+	int colones; //le nb de colones du plateau
+	int plateau[PLATEAU_MAX_COLONNES], i;
+
+	//test lire_entier
+
+	colones = lire_entier(1, PLATEAU_MAX_COLONNES);
+	printf("votre nombre selectione est: %d\n", colones); //fin test lire_entier
+
+	//test plateau_ini
+
+	plateau_init(plateau, colones); //nb de colones définie dans lire_entier
+	printf("Voici votre tableau:\n");
+	for (i = 0; i < colones; i++) //print le tableau test
+		printf("%d ", plateau[i]); //fin test plateau_ini
+
+	//test choisir colone + joueur humain
+	clrscr(); //clear le terminal IMPORTANT
+	plateau_afficher(plateau, colones, 0);
+
+	tour_humain(plateau, colones);
+	tour_ia(plateau, colones, 1);
+}
+
+void test_partie1()
+{
+	int difficulte;
+
+	do
+	{
+		system("color 0F"); //s'essure d'enlever le rouge
+		clrscr();
+		//imprimer le menu
+		gotoxy(0, 0);
+		printf(" MENU:\n-------\n(1) Jeu niveau FACILE\n(2) Jeu niveau MOYEN\n(3) Jeu niveau DIFFICILE\n(4) Quitter\n");
+		difficulte = lire_entier(1, 4);
+
+		if (difficulte != 4)
+		{
+			//demare le jeu
+			demarrer_jeu(difficulte);
+		}
+
+
+	} while (difficulte != 4); //si l'utilisateur de demande pas de quitte
 }
