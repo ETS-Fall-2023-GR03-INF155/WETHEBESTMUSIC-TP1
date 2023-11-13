@@ -21,7 +21,6 @@ int main(void)
 
 	test_partie1();
 
-	test_partie1();
 	getchar();
 	return 0;
 }
