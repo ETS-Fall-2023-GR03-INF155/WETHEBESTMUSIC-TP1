@@ -10,8 +10,6 @@
 #include<stdlib.h>
 #include<math.h>
 #include"nim_test.h"
-#include "nim_io.h"
-#include "nim.h"
 
 /*===========================================================================*/
 /*                            Test des fonctions                             */
@@ -145,7 +143,17 @@ void test_partie1()
 			//demare le jeu
 			demarrer_jeu(difficulte);
 		}
-
-
 	} while (difficulte != 4); //si l'utilisateur de demande pas de quitte
+}
+
+void test_bits()
+{
+	int tableau[8] = {0,0,0,0,0,0,0,0}, nb, i;
+
+	printf("entrez un nombre svp : \n");
+	scanf("%d", &nb);
+	printf("%d\n", codage_dec2bin(nb, tableau));
+	for (i = 0; i < 8; i++) {
+		printf("%d, ",  tableau[i]);
+	}
 }
