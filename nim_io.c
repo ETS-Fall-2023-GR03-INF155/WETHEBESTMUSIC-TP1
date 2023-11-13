@@ -88,7 +88,6 @@ int lire_entier(int min, int max)
 	do
 	{
 		printf("saisir une valeur entre %d et %d: ", min, max);
-		//while (getchar() != '\n') {} //vide le tampon clavier (évite les bug) BUG
 		scanf("%d", &entier);
 
 		//Affiche erreur si l'entier n'est pas entre les bornes
@@ -97,6 +96,7 @@ int lire_entier(int min, int max)
 			gotoxy(posx, posy); //réécris par dessus la ligne
 			clreol();
 			printf("Erreur, ");
+			while (getchar() != '\n') {} //vide le tampon clavier (évite les bug)
 		}
 	} while (entier<min || entier>max);
 
