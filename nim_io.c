@@ -124,7 +124,7 @@ void plateau_afficher(const int plateau[], int nb_colonnes, int col_select)
 	}
 
 	//Étape 2 première colone
-	for (j = 1; j <= 35; j++)
+	for (j = 1; j <= PLATEAU_MAX_PIECES; j++)
 	{
 		gotoxy(2, 41 - j);
 		printf("%d", j);
@@ -133,7 +133,7 @@ void plateau_afficher(const int plateau[], int nb_colonnes, int col_select)
 	//Étape 3 les étoile
 	for (i = 0; i < nb_colonnes; i++)
 	{
-		for (j = 1; j <= 35; j++)
+		for (j = 1; j <= PLATEAU_MAX_PIECES; j++)
 		{
 			if (plateau[i] >= j)
 			{

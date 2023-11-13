@@ -148,12 +148,34 @@ void test_partie1()
 
 void test_bits()
 {
-	int tableau[8] = {0,0,0,0,0,0,0,0}, nb, i;
+	int tab_bits[CODAGE_NB_BITS];
+	int nb_bits;
 
-	printf("entrez un nombre svp : \n");
-	scanf("%d", &nb);
-	printf("%d\n", codage_dec2bin(nb, tableau));
-	for (i = 0; i < 8; i++) {
-		printf("%d, ",  tableau[i]);
-	}
+	// Test de inverser_tab_bits
+	int bits_inverses[CODAGE_NB_BITS] = { 19, 10, 14, 13, 4, 20, 7 };
+	printf("Bits avant inversion : ");
+	afficher_tab_bits(bits_inverses, CODAGE_NB_BITS); //test aff tab bits
+	inverser_tab_bits(bits_inverses, CODAGE_NB_BITS); //test inverser tab bits
+	printf("Bits apres inversion : ");
+	afficher_tab_bits(bits_inverses, CODAGE_NB_BITS);
+
+	// Test de codage_dec2bin
+	int nombre = 25;
+	nb_bits = codage_dec2bin(nombre, tab_bits);
+	printf("Nombre decimal : %d\n", nombre);
+	printf("Bits en binaire : ");
+	afficher_tab_bits(tab_bits, nb_bits);
+
+	// Test de codage_bin2dec
+	int nombre_recupere = codage_bin2dec(tab_bits);
+	printf("Bits en decimal : %d\n\n", nombre_recupere);
+
+	// Exemple d'utilisation de la fonction
+	int plateau[] = { 19, 10, 14, 13, 4, 20, 7 };
+	int nb_colonnes = 7;
+	int matrice[7][CODAGE_NB_BITS];
+
+	construire_mat_binaire(plateau, nb_colonnes, matrice);
+
+	afficher_mat_binaire(matrice, nb_colonnes);
 }

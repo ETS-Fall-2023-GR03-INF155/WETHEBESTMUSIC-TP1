@@ -19,7 +19,7 @@ int main(void)
 {
 	md_srand_interne();// pour la fonction md_randf (initialise un nouveau nombre de départ)
 
-	test_bits();
+	test_partie1();
 
 	getchar();
 	return 0;

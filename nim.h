@@ -48,10 +48,18 @@ void nim_choix_ia_aleatoire(const int plateau[], int nb_colonnes,
 // "choix_colonne" et "choix_nb_pieces"
 void nim_choix_ia(const int plateau[], int nb_colonnes, int niveau,
     int* choix_colonne, int* choix_nb_pieces);
-// intelligent décrit dans la partie 2 du TP. Le choix de l'ordinateur sera stocké dans les deux références
 
+// intelligent décrit dans la partie 2 du TP. Le choix de l'ordinateur sera stocké dans les deux références
 void nim_choix_ia(const int plateau[], int nb_colonnes, int niveau,
     int* choix_colonne, int* choix_nb_pieces);
+
+//Fonction qui construit la matrice binaire nécessaire à l'algorithme de choix 
+// de jeu de l'ordinateur.
+void construire_mat_binaire(const int plateau[], int nb_colonnes,
+    int matrice[][CODAGE_NB_BITS]);
+
+// Fonction qui affiche la matrice binaire
+void afficher_mat_binaire(const int matrice[][CODAGE_NB_BITS], int nb_colonnes);
 
 
 /*===========================================================================*/

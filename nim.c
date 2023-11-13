@@ -98,3 +98,22 @@ void nim_choix_ia(const int plateau[], int nb_colonnes, int niveau, int* choix_c
 	nim_choix_ia_aleatoire(plateau, nb_colonnes, choix_colonne, choix_nb_pieces);
 	//temporaire pendant que partie 2 n'est pas codée
 }
+/*===========================================================================*/
+
+void construire_mat_binaire(const int plateau[], int nb_colonnes,
+	int matrice[][CODAGE_NB_BITS]) {
+	int i;
+	for (i = 0; i < nb_colonnes; i++)
+		codage_dec2bin(plateau[i], matrice[i]);
+}
+
+/*===========================================================================*/
+
+void afficher_mat_binaire(const int matrice[][CODAGE_NB_BITS], int nb_colonnes) {
+	int i;
+	for (i = 0; i < nb_colonnes; i++) {
+		afficher_tab_bits(matrice[i], CODAGE_NB_BITS);
+	}
+}
+
+/*===========================================================================*/
