@@ -13,6 +13,7 @@
 #define	CODAGE_NB_BITS	8	// nb de bit max pour le codage
 #define TRUE   1
 #define FALSE  0
+#define PAIR -1
 
 /*===========================================================================*/
 /*                         Prototype des fonctions                           */

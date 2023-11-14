@@ -14,6 +14,8 @@
 /*===========================================================================*/
 
 #define PLATEAU_MAX_PIECES 35		//Nombre maximal de pièces par colonne
+#define PLATEAU_MIN_COLONNES 2      //Nombre minimal de colonnes sur le plateau
+#define PLATEAU_MAX_COLONNES 20		//Nombre maximal de colonnes sur le plateau
 #define TRUE   1
 #define FALSE  0
 
@@ -40,27 +42,12 @@ int plateau_defragmenter(int plateau[], int nb_colonnes);
 
 //Fonction qui effectue un jeu aléatoire en choisissant au hasard une colonne,
 // puis au hasard le nombre de pièces à jouer de cette colonne
-void nim_choix_ia_aleatoire(const int plateau[], int nb_colonnes,
-    int* choix_colonne, int* choix_nb_pieces);
+void nim_choix_ia_aleatoire(const int [], int , int* , int* );
 
 //Fonction qui détermine quel doit être le jeu de l'ordinateur. Cette fonction implémente l'algorithme
 // intelligent décrit dans la partie 2 du TP. Le choix de l'ordinateur sera stocké dans les deux références
 // "choix_colonne" et "choix_nb_pieces"
-void nim_choix_ia(const int plateau[], int nb_colonnes, int niveau,
-    int* choix_colonne, int* choix_nb_pieces);
-
-// intelligent décrit dans la partie 2 du TP. Le choix de l'ordinateur sera stocké dans les deux références
-void nim_choix_ia(const int plateau[], int nb_colonnes, int niveau,
-    int* choix_colonne, int* choix_nb_pieces);
-
-//Fonction qui construit la matrice binaire nécessaire à l'algorithme de choix 
-// de jeu de l'ordinateur.
-void construire_mat_binaire(const int plateau[], int nb_colonnes,
-    int matrice[][CODAGE_NB_BITS]);
-
-// Fonction qui affiche la matrice binaire
-void afficher_mat_binaire(const int matrice[][CODAGE_NB_BITS], int nb_colonnes);
-
+void nim_choix_ia(const int [], int, int* , int* );
 
 /*===========================================================================*/
 #endif // vas avec le #ifndef

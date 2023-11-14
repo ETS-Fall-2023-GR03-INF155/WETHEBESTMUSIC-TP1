@@ -196,10 +196,37 @@ void tour_ia(int plateau[], int nb_colonnes, int difficulte)
 {
 	int ia_col = 0;
 	int ia_piece = 0;
+	int pile = 0;
 
 	//demande a l'ia de faire un choix de colonne et de pieces
 	//grace a deux pointeurs vers ia_col et ia_piece
-	nim_choix_ia(plateau, nb_colonnes, difficulte, &ia_col, &ia_piece);
+	switch (difficulte)
+	{
+	case 1: //ia aléatoire
+		nim_choix_ia_aleatoire(plateau, nb_colonnes, &ia_col, &ia_piece);
+		break;
+
+	case 2: //ia semi intelligente
+
+		pile = md_randf(1, 2); //pile ou face
+
+		if (pile == 1) //si pile ---> ia aléatoire (case 1)
+		{
+			nim_choix_ia_aleatoire(plateau, nb_colonnes, &ia_col, &ia_piece);
+			break;
+		}
+
+		else //si face  ----> ia intelligente
+		{
+			nim_choix_ia(plateau, nb_colonnes, &ia_col, &ia_piece);
+			break;
+		}
+	case 3:
+	{
+		nim_choix_ia(plateau, nb_colonnes, &ia_col, &ia_piece );
+		break;
+	}
+}
 
 	//entete selection colone ia
 	gotoxy(0, 0);

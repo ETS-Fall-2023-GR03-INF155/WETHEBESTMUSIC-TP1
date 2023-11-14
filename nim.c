@@ -28,6 +28,63 @@ static void plateau_supprimer_colonne(int plateau[], int nb_colonnes, int col_a_
 }
 
 /*===========================================================================*/
+
+//a des fin de test!!! print la matrice binaire
+
+static void afficher_mat_binaire(const int matrice[][CODAGE_NB_BITS], int nb_colonnes) {
+	int i, j;
+	for (int i = 0; i < nb_colonnes; i++) {
+		for (int j = 0; j < CODAGE_NB_BITS; j++) {
+			printf("%d ", matrice[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+/*===========================================================================*/
+
+//construit une matrice le nb de bit maximal comme x et le nb de colonne comme j
+//rempli cette matrice grace a codage_dec2bin
+
+static void construire_mat_binaire(const int plateau[], int nb_colonnes,
+	int matrice[][CODAGE_NB_BITS]) {
+	int j;
+	for (j = 0; j < nb_colonnes; j++) {
+		codage_dec2bin(plateau[j], matrice[j]);//change ligne par ligne la matrice grace a tableau 
+		//1 dimension de codage dec2bin
+	}
+}
+
+/*===========================================================================*/
+
+// Fonction qui calcule la somme de chaque colonne d'une matrice binaire
+static void sommes_mat_binaire(const int matrice[][CODAGE_NB_BITS],
+	int nb_lignes, int sommes[]) {
+	int i, j;
+	for (int j = 0; j < CODAGE_NB_BITS; j++) {
+		sommes[j] = 0;
+		for (int i = 0; i < nb_lignes; i++) {
+			sommes[j] += matrice[i][j];
+		}
+	}
+}
+
+/*===========================================================================*/
+
+//fonction qui détecte le premier impaire 
+
+static int position_premier_impaire(const int tab[])
+{
+	int i;
+	for (i = 0; i < CODAGE_NB_BITS; i++)
+	{
+		if (tab[i] & 2 != 0)
+			return i;
+	}
+	return -1;
+}
+
+/*===========================================================================*/
 /*                              Fonctions                                    */
 /*===========================================================================*/
 
@@ -91,29 +148,57 @@ void nim_choix_ia_aleatoire(const int plateau[], int nb_colonnes, int* choix_col
 
 /*===========================================================================*/
 
-//fonction qui determine le jeu de l'ordnateur intelligent
+//fonction qui determine le jeu de l'ordinateur intelligent
 
-void nim_choix_ia(const int plateau[], int nb_colonnes, int niveau, int* choix_colonne, int* choix_nb_pieces)
+void nim_choix_ia(const int plateau[], int nb_colonnes, int* choix_colonne, int* choix_nb_pieces)
 {
-	nim_choix_ia_aleatoire(plateau, nb_colonnes, choix_colonne, choix_nb_pieces);
-	//temporaire pendant que partie 2 n'est pas codée
-}
-/*===========================================================================*/
 
-void construire_mat_binaire(const int plateau[], int nb_colonnes,
-	int matrice[][CODAGE_NB_BITS]) {
+	int matrice[PLATEAU_MAX_COLONNES][CODAGE_NB_BITS];
+	int sommes[CODAGE_NB_BITS];
+	int tabcol[CODAGE_NB_BITS];
+	int bonne_colonne = 0;
+	int good_colonne;
+	int good = 1;
 	int i;
-	for (i = 0; i < nb_colonnes; i++)
-		codage_dec2bin(plateau[i], matrice[i]);
-}
+	int j;
+	int convert;
+	int initial;
 
-/*===========================================================================*/
+	// Initialiseà -1 au cas où il y aurait une erreur
 
-void afficher_mat_binaire(const int matrice[][CODAGE_NB_BITS], int nb_colonnes) {
-	int i;
-	for (i = 0; i < nb_colonnes; i++) {
-		afficher_tab_bits(matrice[i], CODAGE_NB_BITS);
+	*choix_colonne = PAIR;
+	*choix_nb_pieces = PAIR;
+
+	//choix colonne
+
+	construire_mat_binaire(plateau, nb_colonnes, matrice); //construire la matrice
+	sommes_mat_binaire(matrice, nb_colonnes, sommes); //construire le tableau sommes
+	bonne_colonne = position_premier_impaire(sommes); //trouver la pos de prem somme impair
+	if (bonne_colonne == -1) //si pas de nb impair
+	{
+		nim_choix_ia_aleatoire(plateau, nb_colonnes, choix_colonne, choix_nb_pieces);
+		return;
 	}
-}
+	for (i = 0; good && i<nb_colonnes; i++)
+	{
+		if (matrice[i][bonne_colonne] == 1)
+		{
+			good_colonne = i;	//bonne ligne
+			good = 0; //sors de la boucle
+		}
+	}
 
+	//choix nb piece
+
+	for (j = bonne_colonne; j < CODAGE_NB_BITS; j++)
+	{
+		matrice[good_colonne][j] = (matrice[good_colonne][j] == 1) ? 0 : 1; //inverse les bits
+	}
+	convert = codage_bin2dec(matrice[good_colonne]);
+	initial = plateau[good_colonne];
+
+	*choix_nb_pieces = initial - convert;
+	*choix_colonne = good_colonne;
+
+}
 /*===========================================================================*/

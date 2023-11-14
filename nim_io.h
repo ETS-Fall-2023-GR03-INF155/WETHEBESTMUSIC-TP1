@@ -15,13 +15,10 @@
 /*                       Déclarations des constantes                         */
 /*===========================================================================*/
 
-#define PLATEAU_MIN_COLONNES 2      //Nombre minimal de colonnes sur le plateau
-#define PLATEAU_MAX_COLONNES 20		//Nombre maximal de colonnes sur le plateau
 #define ESPACE 32
 #define FLECHE_GAUCHE 75
 #define FLECHE_DROITE 77 
 #define ENTER 13
-
 
 /*===========================================================================*/
 /*                         Prototype des fonctions                           */
@@ -35,6 +32,7 @@ void plateau_afficher(int[], int, int);
 
 //Déclenche le tour de l'humain.
 void tour_humain(int plateau[], int nb_colonnes);
+
 //tour de l'humain
 void tour_humain(int[], int);
 

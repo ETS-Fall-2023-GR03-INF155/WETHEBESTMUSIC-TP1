@@ -145,7 +145,7 @@ void test_partie1()
 		}
 	} while (difficulte != 4); //si l'utilisateur de demande pas de quitte
 }
-
+/*
 void test_bits()
 {
 	int tab_bits[CODAGE_NB_BITS];
@@ -170,12 +170,27 @@ void test_bits()
 	int nombre_recupere = codage_bin2dec(tab_bits);
 	printf("Bits en decimal : %d\n\n", nombre_recupere);
 
-	// Exemple d'utilisation de la fonction
-	int plateau[] = { 19, 10, 14, 13, 4, 20, 7 };
-	int nb_colonnes = 7;
-	int matrice[7][CODAGE_NB_BITS];
+	// test matrice
+	int plateau[] = { 7, 7, 7, 8,5,6,8,9,9,1,3,4, };
+	int nb_colonnes = 12;
+	int matrice[12][CODAGE_NB_BITS];
 
 	construire_mat_binaire(plateau, nb_colonnes, matrice);
 
 	afficher_mat_binaire(matrice, nb_colonnes);
+
+	// test sommes
+	int it,sommes[CODAGE_NB_BITS];
+
+	sommes_mat_binaire(matrice, nb_colonnes, sommes);
+
+	for (it = 0; it < CODAGE_NB_BITS; it++)
+	{
+		printf("%d ", sommes[it]);
+	}
+	printf("\n");
+
+	//test impaire 
+	printf("la position de la premiere somme impaire est : %d\n", position_premier_impaire(sommes));
 }
+*/
