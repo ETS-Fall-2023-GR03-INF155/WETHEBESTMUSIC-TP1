@@ -82,7 +82,7 @@ int lire_entier(int min, int max)
 	int entier, posx, posy;
 
 	posx = wherex(); //prends la position du curseur avant tout
-	posy = wherey();
+	posy = wherey(); //pour pouvoir réécrire sur la ligne en cas d'erreur
 
 	//boucle qui redemande un entier tant que celui-ci n'est pas entre les bornes
 	do
@@ -221,7 +221,7 @@ void tour_ia(int plateau[], int nb_colonnes, int difficulte)
 			nim_choix_ia(plateau, nb_colonnes, &ia_col, &ia_piece);
 			break;
 		}
-	case 3:
+	case 3: //ia intelligente
 	{
 		nim_choix_ia(plateau, nb_colonnes, &ia_col, &ia_piece );
 		break;

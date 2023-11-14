@@ -7,6 +7,7 @@
 #define _NIM_TEST_H_ 
 
 #include "nim_io.h"
+#include "m_distributions.h"
 
 /*===========================================================================*/
 /*                         Prototype des fonctions                           */
@@ -15,7 +16,7 @@
 void test_1_et_2();
 void test_tour();
 void test_partie1();
-void test_bits();
+//void test_bits();
 
 /*===========================================================================*/
 #endif // vas avec le #ifndef

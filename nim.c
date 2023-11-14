@@ -16,7 +16,7 @@
 /*===========================================================================*/
 
 //supprime une colone et décale les autres vers la gauche
-//la dernière colone n'est pas modifiée et devras etre supprimée
+//! la dernière colone n'est pas modifiée et devras etre supprimée
 
 static void plateau_supprimer_colonne(int plateau[], int nb_colonnes, int col_a_supprimer)
 {
@@ -49,22 +49,24 @@ static void afficher_mat_binaire(const int matrice[][CODAGE_NB_BITS], int nb_col
 static void construire_mat_binaire(const int plateau[], int nb_colonnes,
 	int matrice[][CODAGE_NB_BITS]) {
 	int j;
-	for (j = 0; j < nb_colonnes; j++) {
-		codage_dec2bin(plateau[j], matrice[j]);//change ligne par ligne la matrice grace a tableau 
-		//1 dimension de codage dec2bin
+	for (j = 0; j < nb_colonnes; j++) {  
+		codage_dec2bin(plateau[j], matrice[j]);//change ligne par ligne la matrice grace au plateau 
+		                                       //1 dimension binaire dec2bin (les deux ont la mm longueur i)
 	}
 }
 
 /*===========================================================================*/
 
 // Fonction qui calcule la somme de chaque colonne d'une matrice binaire
+
 static void sommes_mat_binaire(const int matrice[][CODAGE_NB_BITS],
 	int nb_lignes, int sommes[]) {
 	int i, j;
 	for (int j = 0; j < CODAGE_NB_BITS; j++) {
-		sommes[j] = 0;
+		sommes[j] = 0;						//reset la somme pour chauqe colone de la matrice
 		for (int i = 0; i < nb_lignes; i++) {
-			sommes[j] += matrice[i][j];
+			sommes[j] += matrice[i][j];     //la somme est égale a la somme de chaque ligne 
+											//d'une mm colonne (donc j fixe pour chaque somme)
 		}
 	}
 }
@@ -78,7 +80,7 @@ static int position_premier_impaire(const int tab[])
 	int i;
 	for (i = 0; i < CODAGE_NB_BITS; i++)
 	{
-		if (tab[i] & 2 != 0)
+		if (tab[i] & 2 != 0) //si y a un reste lors d'une division par 2--> impair
 			return i;
 	}
 	return -1;
@@ -89,7 +91,7 @@ static int position_premier_impaire(const int tab[])
 /*===========================================================================*/
 
 //Initialise le plateau de jeu en remplissant les colones
-// d'un nombre aléatoire de pièces
+//d'un nombre aléatoire de pièces
 
 void plateau_init(int plateau[], int nb_colonnes)
 {
@@ -117,8 +119,7 @@ int nim_jouer_tour(int plateau[], int nb_colonnes, int colonne, int nb_pieces)
 /*===========================================================================*/
 
 //utilise la fonction privée plateau supprimer colonne pour suprimer les colones vides
-// et retourne le nouveau nombre de colone
-
+//et retourne le nouveau nombre de colone
 
 int plateau_defragmenter(int plateau[], int nb_colonnes)
 {
@@ -153,32 +154,35 @@ void nim_choix_ia_aleatoire(const int plateau[], int nb_colonnes, int* choix_col
 void nim_choix_ia(const int plateau[], int nb_colonnes, int* choix_colonne, int* choix_nb_pieces)
 {
 
-	int matrice[PLATEAU_MAX_COLONNES][CODAGE_NB_BITS];
-	int sommes[CODAGE_NB_BITS];
-	int tabcol[CODAGE_NB_BITS];
-	int bonne_colonne = 0;
-	int good_colonne;
-	int good = 1;
+	int matrice[PLATEAU_MAX_COLONNES][CODAGE_NB_BITS]; //matrice principale
+	int sommes[CODAGE_NB_BITS]; //somme des colone de la matrice principale
+	int bonne_colonne = 0; //colonne dans la matrice dont la somme est le premier impair des sommes
+	int good_colonne; //colonne du plateau a prendre (équivaut a une ligne dans la matrice)
+	int good = 1; //indicateur pour savoir si le premier impar a été trouvé (---> 0)
 	int i;
 	int j;
-	int convert;
-	int initial;
+	int convert; //valeur désirée
+	int initial; //valeur initiale
 
-	// Initialiseà -1 au cas où il y aurait une erreur
+	// Initialise à -1 au cas où il y aurait une erreur
 
 	*choix_colonne = PAIR;
 	*choix_nb_pieces = PAIR;
 
-	//choix colonne
+	//choix colonne dans la matrice
 
 	construire_mat_binaire(plateau, nb_colonnes, matrice); //construire la matrice
 	sommes_mat_binaire(matrice, nb_colonnes, sommes); //construire le tableau sommes
-	bonne_colonne = position_premier_impaire(sommes); //trouver la pos de prem somme impair
+	bonne_colonne = position_premier_impaire(sommes); //trouver la pos de la prem somme impair
+
 	if (bonne_colonne == -1) //si pas de nb impair
 	{
 		nim_choix_ia_aleatoire(plateau, nb_colonnes, choix_colonne, choix_nb_pieces);
 		return;
 	}
+
+	//boucle qui trouve le premier bit '1' de la colone choisie dans la matrice
+
 	for (i = 0; good && i<nb_colonnes; i++)
 	{
 		if (matrice[i][bonne_colonne] == 1)
@@ -196,6 +200,8 @@ void nim_choix_ia(const int plateau[], int nb_colonnes, int* choix_colonne, int*
 	}
 	convert = codage_bin2dec(matrice[good_colonne]);
 	initial = plateau[good_colonne];
+
+	//assignations finales 
 
 	*choix_nb_pieces = initial - convert;
 	*choix_colonne = good_colonne;

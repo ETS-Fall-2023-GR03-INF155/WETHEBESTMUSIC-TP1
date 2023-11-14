@@ -16,9 +16,6 @@
 #define PLATEAU_MAX_PIECES 35		//Nombre maximal de pièces par colonne
 #define PLATEAU_MIN_COLONNES 2      //Nombre minimal de colonnes sur le plateau
 #define PLATEAU_MAX_COLONNES 20		//Nombre maximal de colonnes sur le plateau
-#define TRUE   1
-#define FALSE  0
-
 
 /*===========================================================================*/
 /*                   Prototype des fonctions publiques                       */
